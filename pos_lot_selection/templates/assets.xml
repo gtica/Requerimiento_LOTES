@@ -8,6 +8,7 @@
         <xpath expr=".">
             <script type="text/javascript" src="/pos_lot_selection/static/src/js/models.js"/>
             <script type="text/javascript" src="/pos_lot_selection/static/src/js/chrome.js"/>
+            <script type="text/javascript" src="/pos_lot_selection/static/src/js/screens.js"/>
             <link rel="stylesheet" href="/pos_lot_selection/static/src/css/pos.css" />
         </xpath>
     </template>

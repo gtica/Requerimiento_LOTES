@@ -10,7 +10,7 @@ odoo.define("pos_lot_selection.chrome", function (require) {
         build_widgets: function () {
             var res = this._super.apply(this, arguments);
             var packlotline = this.gui.popup_instances.packlotline;
-            console.log('----------' + this.gui.popup_instances[name]);
+            //console.log('----------' + this.gui.popup_instances[name]);
             // Add events over instanced popup
             var events = {
                 "change .packlot-line-select": "lot_to_input",

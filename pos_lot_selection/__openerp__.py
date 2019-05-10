@@ -10,6 +10,15 @@
               'Odoo Community Association (OCA)',
     'website': 'https://github.com/OCA/pos',
     'license': 'AGPL-3',
+    'description': """
+List of modifications:
+----------------------
+    * V.-2.0 Permite seleccionar primero el Producto, segundo paso selección de Lote
+    * V.-2.1 Al precionar botón de pago, si en la línea de orden existe un producto de lote o serie, no permite procesar factura hasta tanto el usuario seleccione un lote o serail correspondiente
+    * V.-2.2 Ventana de alerta si no haz seleccionado un Lote 
+    * V.-2.3 En input lista destinado para selecionar lotes, aparece la cantidad de productos en Stock para el Lote en específico
+ 
+ """,
     'depends': [
         'point_of_sale',
     ],
