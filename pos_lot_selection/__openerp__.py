@@ -7,7 +7,7 @@
     'version': '10.0.1.0.0',
     'category': 'Point of Sale',
     'author': 'Tecnativa,'
-              'Odoo Community Association (OCA)',
+              'Odoo Community Association (OCA) Update Ing Henry Vivas',
     'website': 'https://github.com/OCA/pos',
     'license': 'AGPL-3',
     'description': """
@@ -17,7 +17,8 @@ List of modifications:
     * V.-2.1 Al precionar botón de pago, si en la línea de orden existe un producto de lote o serie, no permite procesar factura hasta tanto el usuario seleccione un lote o serail correspondiente
     * V.-2.2 Ventana de alerta si no haz seleccionado un Lote 
     * V.-2.3 En input lista destinado para selecionar lotes, aparece la cantidad de productos en Stock para el Lote en específico
- 
+    * V.-2.4 Presentación más amigable en lista de lotes, Nombre de lote y cantidad en Unidades que tiene en Stock
+
  """,
     'depends': [
         'point_of_sale',

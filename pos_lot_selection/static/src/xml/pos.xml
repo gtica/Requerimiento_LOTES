@@ -15,7 +15,7 @@
                         <option disabled="" selected="" value="">Select a Serial/Lot Number</option>
                         <t t-foreach="widget.options.pack_lot_lines.lot_name" t-as="lot_name">
                             <option t-att-value="lot_name">
-                                <t t-esc="lot_name + ' || En Stock -> ' + lot_value[lot_name_index]"/>
+                                <t t-esc="lot_value[lot_name_index]"/>
                             </option>
                         </t>
                     </select>

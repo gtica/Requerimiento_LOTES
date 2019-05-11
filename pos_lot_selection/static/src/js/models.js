@@ -25,6 +25,7 @@ odoo.define("pos_lot_selection.models", function (require) {
                         product_lot.push({
                             'lot_name': result.records[i].lot_id[1],
                             'qty': result.records[i].qty,
+                            'lot_qty': result.records[i].name
                         });
                     }
                 }
@@ -104,7 +105,7 @@ odoo.define("pos_lot_selection.models", function (require) {
                 for (var i = 0; i < product_lot.length; i++) {
                     if (product_lot[i].qty >= compute_lot_lines.order_line.quantity) {
                         lot_name.push(product_lot[i].lot_name);
-                        lot_value.push(product_lot[i].qty);
+                        lot_value.push(product_lot[i].lot_qty);
                     }
                 }
                 compute_lot_lines.lot_name = lot_name;
