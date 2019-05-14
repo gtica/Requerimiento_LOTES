@@ -101,13 +101,26 @@ odoo.define("pos_lot_selection.models", function (require) {
             .then(function (product_lot) {
                 var lot_name = [];
                 var lot_value = [];
+                var type_lot = compute_lot_lines.order_line.product.tracking;
 
                 for (var i = 0; i < product_lot.length; i++) {
-                    if (product_lot[i].qty >= compute_lot_lines.order_line.quantity) {
-                        lot_name.push(product_lot[i].lot_name);
-                        lot_value.push(product_lot[i].lot_qty);
+
+                    if(type_lot == 'serial'){
+                       //Lista de producto serial disponibles
+                        if (product_lot[i].qty != 0) {
+                            lot_name.push(product_lot[i].lot_name);
+                            lot_value.push(product_lot[i].lot_qty);
+                        }
+                    }else{
+
+                        if (product_lot[i].qty >= compute_lot_lines.order_line.quantity) {
+                            lot_name.push(product_lot[i].lot_name);
+                            lot_value.push(product_lot[i].lot_qty);
+                        }
                     }
+
                 }
+               
                 compute_lot_lines.lot_name = lot_name;
                 compute_lot_lines.lot_value = lot_value;
 
