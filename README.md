@@ -1,18 +1,18 @@
 # Requerimiento Especial LOtes
 
-##Descripción: 
+## Descripción: 
 
 Requeriiento especial Lotes 
 
-##Nombre de la Aplicacion Final: 
+## Nombre de la Aplicacion Final: 
 
 pos_lot_selection
 
-###Nota:
+### Nota:
  
  Aplicacion adaptada para funcionar en POS 9 Versionado con el POS Odoo V11
 
-### Lista de Modificaciones
+## Lista de Modificaciones
 
     List of modifications:
 ----------------------
@@ -25,8 +25,6 @@ pos_lot_selection
 
 
 ## Anexos V.-2.5
-
-
 
 Antes  | Después
 ------------- | -------------
