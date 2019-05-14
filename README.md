@@ -21,14 +21,16 @@ pos_lot_selection
     * V.-2.2 Ventana de alerta si no haz seleccionado un Lote 
     * V.-2.3 En input lista destinado para selecionar lotes, aparece la cantidad de productos en Stock para el Lote en específico
     * V.-2.4 Presentación más amigable en lista de lotes, Nombre de lote y cantidad en Unidades que tiene en Stock
-    * V.-2.5 Correción de Error en la Lista de producto tipo serial, no mostraba la lista si la cantidad en la linea de orden era mayor a uno
+    * V.-2.5 Correción de Error en la Lista de producto tipo serial, no mostraba la lista de serail si la cantidad en la linea de orden era mayor a uno
 
 
-##Anexos V.-2.5
+## Anexos V.-2.5
 
-Anexo A  | Anexo B
+
+
+Antes  | Después
 ------------- | -------------
-![](https://pandao.github.io/editor.md/examples/images/4.jpg)  | ![](https://pandao.github.io/editor.md/examples/images/4.jpg)
+![](https://github.com/ControlWebManager/Requerimiento_LOTES/blob/master/img/Captura%20de%20pantalla%20de%202019-05-14%2015-21-52.png)  | ![](https://github.com/ControlWebManager/Requerimiento_LOTES/blob/master/img/Captura%20de%20pantalla%20de%202019-05-14%2014-45-51.png)
      
      
 
