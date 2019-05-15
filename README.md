@@ -18,11 +18,11 @@ Actividad  | Descripcion
 2- Desarrollar representación del modelo stock_quant | Ubicar campos necesarios Anexo 1
 3- Cargar de la representación del modelo stock_quant en Caché | Desarrollo crítico , ya que de esta actividad depende el resto de función de la APP Anexo 1
 4- Prueba de Caja Negra 1 | 
-5- Captura Información de cache | 
-6- Hacer uso de la información captura en método específico | 
-7- Sin elaborar  .... | 
-8- Sin Elaborar ... | 
-9- Sin Elborar ... | 
+5- Captura Información de cache | La captura se realiza en el metodo compute_lot_lines y es procesada por el metodo get_lot archivo models
+6- Hacer uso de la información captura en método específico | metodo get_lot
+7- Filtrar objeto obtenido y listar solo los productos disponibles para la venta | 
+8- Agregar info extra al array product_lot (name) | Este array es el que almacena la informacion sobre los lotes del producto y es enviada al template xml visualizada en el popup del punto de venta
+9- Comprobar envio de produc_lot, captura y render xml | 
 
 ### Fase de Prueba : 
 
@@ -51,6 +51,10 @@ Actividad | Descripcion
  1.8. Dirigirse al Backend de la plataforma Odoo aplicaacion de Inventario |  Diagnosticar en inventario que los productos han sido descontandos de forma correcta y de acuerdo a las instrucciones enviadas por el punto de venta, verificar orden de pedido
  2-Pruebas sin Conexión a Internet |
  2.1 Diagnosticar funcionalidad de la APP sin conexión a internet | Realizar actividades 1.1 hasta la actividad 1.7
+ 
+ ## Anexos
+ 
+ ### Anexo 1, Carga de modelos en cache 
 
      
 
