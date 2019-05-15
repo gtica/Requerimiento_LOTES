@@ -15,8 +15,8 @@ Todas la modificaciones deben realizarse en una sola aplicación (pos_lot_select
 Actividad  | Descripcion
 ------------- | -------------
 1- Diagnosticar archivos, objetos y métodos necesarios | Información necesaria para la modificacion y extención de código
-2- Desarrollar representación del modelo stock_quant | Ubicar campos necesarios 
-3- Cargar de la representación del modelo stock_quant en Caché | Desarrollo crítico , ya que de esta actividad depende el resto de función de la APP
+2- Desarrollar representación del modelo stock_quant | Ubicar campos necesarios Anexo 1
+3- Cargar de la representación del modelo stock_quant en Caché | Desarrollo crítico , ya que de esta actividad depende el resto de función de la APP Anexo 1
 4- Prueba de Caja Negra 1 | 
 5- Captura Información de cache | 
 6- Hacer uso de la información captura en método específico | 
@@ -32,7 +32,7 @@ Pruebas a nivel de código
 
 Actividad | Descripcion 
 ------------- | -------------
- 1- Carga de representación de modelo en cache | Verificar si la carga de la representacion del modelo stock_quante y campos, se realiza de manera satisfactoria al cargar el punto de venta en el navegador
+ 1- Carga de representación de modelo en cache | Verificar si la carga de la representacion del modelo stock_quante y campos, se realiza de manera satisfactoria al cargar el punto de venta en el navegador Anexo 1
  
 #### White Box / Test de Caja Blanca
 
