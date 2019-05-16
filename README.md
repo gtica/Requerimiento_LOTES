@@ -34,7 +34,7 @@ Pruebas a nivel de código
 Actividad | Descripcion 
 ------------- | -------------
  1- Carga de representación de modelo en cache | Verificar si la carga de la representacion del modelo stock_quante y campos, se realiza de manera satisfactoria al cargar el punto de venta en el navegador Anexo 1
- 2- Errorn 001 encontrado en test | El input que lista los producto de lotes, muestra lotes vendidos y disponibles 
+ 2- Errorn 001 encontrado en test | El input que lista los producto de lotes, muestra lotes que ya fueron vendidos y disponibles 
  
 #### White Box / Test de Caja Blanca
 
