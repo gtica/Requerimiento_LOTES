@@ -32,8 +32,7 @@ odoo.define("pos_lot_selection.models", function (require) {
         get_lot: function(product, location_id, stock_quant) {
             var done = new $.Deferred();
             var self = this;
-            var product_id = product;
-            var location_id = location_id;
+            
             console.log('stock_quant', stock_quant)
                 var product_lot = [];
 
@@ -45,15 +44,12 @@ odoo.define("pos_lot_selection.models", function (require) {
                     });
 
                     //console.log('filter_models',filter_models)
-
                     for (var i = 0; i < filter_models.length; i++) {
-                        if(stock_quant[i].product_id[0] === product && stock_quant[i].location_id[0] === location_id ){
-                            product_lot.push({
-                                'lot_name': result.records[i].lot_id[1],
-                                'qty': result.records[i].qty,
-                                'lot_qty': result.records[i].name
-                            });
-                         }
+                        product_lot.push({
+                            'lot_name': filter_models[i].lot_id[1],
+                            'qty': filter_models[i].qty,
+                            'lot_qty': filter_models[i].name
+                        });
                     }
                 }
                 done.resolve(product_lot);
