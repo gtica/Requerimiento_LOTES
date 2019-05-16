@@ -58,6 +58,9 @@ Actividad | Descripcion
  
  ### Anexo 1, Carga de modelos en cache 
 
+![](https://github.com/gtica/Requerimiento_LOTES/blob/master/img/Selecci%C3%B3n_756.png)
+![](https://github.com/gtica/Requerimiento_LOTES/blob/master/img/Selecci%C3%B3n_757.png)
+![](https://github.com/gtica/Requerimiento_LOTES/blob/master/img/Selecci%C3%B3n_758.png)
      
 
 ---------------------
