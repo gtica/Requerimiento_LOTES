@@ -15,7 +15,7 @@ odoo.define("pos_lot_selection.models", function (require) {
 
           initialize: function(session, attributes) {
                _posmodel_super.initialize.apply(this, arguments);
-               this.stock_quant = []
+               this.stock_quant = [];
                var model_stock_quant = {
                     model:  'stock.quant',
                     fields: ['product_id','lot_id', 'qty','name','location_id'],
