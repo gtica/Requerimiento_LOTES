@@ -23,6 +23,7 @@ Actividad  | Descripcion
 7- Filtrar objeto obtenido y listar solo los productos disponibles para la venta | 
 8- Agregar info extra al array product_lot (name) | Este array es el que almacena la informacion sobre los lotes del producto y es enviada al template xml visualizada en el popup del punto de venta
 9- Comprobar envio de produc_lot, captura y render xml | 
+10-Corrección de error n 001 | En el objeto stock_quant envia al método get_lot, se debe filtrar la información para leer solo los lotes y productos serial que se encuentre en la ubicación != a Almacen / Cliente
 
 ### Fase de Prueba : 
 
@@ -33,6 +34,7 @@ Pruebas a nivel de código
 Actividad | Descripcion 
 ------------- | -------------
  1- Carga de representación de modelo en cache | Verificar si la carga de la representacion del modelo stock_quante y campos, se realiza de manera satisfactoria al cargar el punto de venta en el navegador Anexo 1
+ 2- Errorn 001 encontrado en test | El input que lista los producto de lotes, muestra lotes vendidos y disponibles 
  
 #### White Box / Test de Caja Blanca
 
