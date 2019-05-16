@@ -24,7 +24,7 @@ Actividad  | Descripcion
 8- Agregar info extra al array product_lot (name) | Este array es el que almacena la informacion sobre los lotes del producto y es enviada al template xml visualizada en el popup del punto de venta
 9- Comprobar envio de produc_lot, captura y render xml | 
 10-Corrección de error n 001 | En el objeto stock_quant envia al método get_lot, se debe filtrar la información para leer solo los lotes y productos serial que se encuentre en la ubicación != a Almacen / Cliente
-10-Corrección de error n 002 | Parametrización incorrecta en prodcut?lot.push
+11-Corrección de error n 002 | Parametrización incorrecta en prodcut?lot.push
 
 ### Fase de Prueba : 
 
