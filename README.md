@@ -28,7 +28,7 @@ Actividad  | Descripcion
 
 ### Fase de Prueba : 
 
-#### Black Box / Test de Caja Blanca
+#### White Box / Test de Caja Blanca
 
 Pruebas a nivel de código 
 
@@ -39,7 +39,7 @@ Actividad | Descripcion
  3- Seguimiento de variables, métodos | Comportamiento a nivel de codigo de las aplicacion
  3- Errorn 002 encontrado en test | Variables indefinidas en clave de product_lot
  
-#### White Box / Test de Caja Negra
+#### Back Box / Test de Caja Negra
 
  Pruebas funcionales a nivel de usuario
 
