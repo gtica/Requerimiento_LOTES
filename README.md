@@ -53,7 +53,7 @@ Actividad | Descripcion
  1.5. Completar proceso de compra  | Proceso standar 
  1.6. Seleccionar productos tipo lotes | Verficar si las cantidades de producto han sido descontadas para el lote que corresponda
  1.7. Seleccionar productos tipo Serial | Verficar si los productos tipos serial vendidos en la orden de venta anterior aún aparece su código, el Flujo correcto del programa es que estos producto no deben aparecer ya que, ya fueron vendido
- 1.8. Dirigirse al Backend de la plataforma Odoo aplicaacion de Inventario |  Diagnosticar en inventario que los productos han sido descontandos de forma correcta y de acuerdo a las instrucciones enviadas por el punto de venta, verificar orden de pedido
+ 1.8. Dirigirse al Backend de la plataforma Odoo aplicacion de Inventario |  Diagnosticar en inventario que los productos han sido descontandos de forma correcta y de acuerdo a las instrucciones enviadas por el punto de venta, verificar orden de pedido
  2-Pruebas sin Conexión a Internet |
  2.1 Diagnosticar funcionalidad de la APP sin conexión a internet | Realizar actividades 1.1 hasta la actividad 1.7
  
