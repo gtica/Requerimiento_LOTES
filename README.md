@@ -24,7 +24,10 @@ Actividad  | Descripcion
 8- Agregar info extra al array product_lot (name) | Este array es el que almacena la informacion sobre los lotes del producto y es enviada al template xml visualizada en el popup del punto de venta
 9- Comprobar envio de produc_lot, captura y render xml | 
 10-Corrección de error n 001 | En el objeto stock_quant envia al método get_lot, se debe filtrar la información para leer solo los lotes y productos serial que se encuentre en la ubicación != a Almacen / Cliente
-11-Corrección de error n 002 | Parametrización incorrecta en prodcut_lot.push
+12-Observación 001 | No existe actualización de información una vez vendido los productos
+13-Desarrollo de funciones |  update_model funcion de toma las lineas de pedido en la orden actual y se encarga de realizar los descuentos correspondiente
+14- Desencadenar función update_model | Esta funcion se activa en el momento que se validar la orden , funcion encargada de la accioon pursh_order
+
 
 ### Fase de Prueba : 
 
@@ -37,9 +40,10 @@ Actividad | Descripcion
  1- Carga de representación de modelo en cache | Verificar si la carga de la representacion del modelo stock_quante y campos, se realiza de manera satisfactoria al cargar el punto de venta en el navegador Anexo 1
  2- Errorn 001 encontrado en test | El input que lista los producto de lotes, muestra lotes que ya fueron vendidos y disponibles 
  3- Seguimiento de variables, métodos | Comportamiento a nivel de codigo de las aplicacion
- 3- Errorn 002 encontrado en test | Variables indefinidas en clave de product_lot
+ 4- Errorn 002 encontrado en test | Variables indefinidas en clave de product_lot
+ 5- Errorn 002 encontrado en test | Variables indefinidas en clave de product_lot
  
-#### Back Box / Test de Caja Negra
+#### Black Box / Test de Caja Negra
 
  Pruebas funcionales a nivel de usuario
 
@@ -56,6 +60,9 @@ Actividad | Descripcion
  1.8. Dirigirse al Backend de la plataforma Odoo aplicacion de Inventario |  Diagnosticar en inventario que los productos han sido descontandos de forma correcta y de acuerdo a las instrucciones enviadas por el punto de venta, verificar orden de pedido
  2-Pruebas sin Conexión a Internet |
  2.1 Diagnosticar funcionalidad de la APP sin conexión a internet | Realizar actividades 1.1 hasta la actividad 1.7
+ 3 Observaciones  | Pruebas relizadas a nivel de usuario
+ 3.1 Observaciones 001  | No se descuenta la disponibilidad de los lotes ni productos serial que se han vendido
+ 3.2 Observaciones 002  | Modificar el formato de como se muestra la informacion de los lotes Anexo 4
  
  ## Anexos
  
@@ -64,6 +71,10 @@ Actividad | Descripcion
 ![](https://github.com/gtica/Requerimiento_LOTES/blob/master/img/Selecci%C3%B3n_756.png)
 ![](https://github.com/gtica/Requerimiento_LOTES/blob/master/img/Selecci%C3%B3n_757.png)
 ![](https://github.com/gtica/Requerimiento_LOTES/blob/master/img/Selecci%C3%B3n_758.png)
+
+ 
+ ### Anexo 4, Modificacion de formato lista de lotes / serial
+![](https://github.com/gtica/Requerimiento_LOTES/blob/master/img/Selecci%C3%B3n_760.png)
      
 
 ---------------------
