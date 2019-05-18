@@ -20,6 +20,7 @@ List of modifications / Updates:
     * V.-2.4 Presentación más amigable en lista de lotes, Nombre de lote y cantidad en Unidades que tiene en Stock
     * V.-2.5 Correción de Error en la Lista de producto tipo serial, no mostraba la lista si la cantidad en la linea de orden era mayor a uno
     * V.-3.0 Funcianabilidad de la aplicacion para operar en POS en estado sin conexión a Internet
+    * V.-3.1 Actualizacion de cantidades vendidas y disponibles de lotes / serial en BD Cache
 
  """,
     'depends': [
