@@ -42,6 +42,7 @@ Actividad | Descripcion
  3- Seguimiento de variables, métodos | Comportamiento a nivel de codigo de las aplicacion
  4- Errorn 002 encontrado en test | Variables indefinidas en clave de product_lot
  5- Errorn 002 encontrado en test | Variables indefinidas en clave de product_lot
+ 6- Validar actualización de cantidaddes en cache | Sin observaciones que destacar
  
 #### Black Box / Test de Caja Negra
 
