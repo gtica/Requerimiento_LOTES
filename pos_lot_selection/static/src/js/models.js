@@ -10,7 +10,6 @@ odoo.define("pos_lot_selection.models", function (require) {
 
     var _posmodel_super = models.PosModel.prototype;
 
-
     models.PosModel = models.PosModel.extend({
 
           initialize: function(session, attributes) {
@@ -18,7 +17,7 @@ odoo.define("pos_lot_selection.models", function (require) {
                this.stock_quant = [];
                var model_stock_quant = {
                     model:  'stock.quant',
-                    fields: ['product_id','lot_id', 'qty','name','location_id'],
+                    fields: ['product_id','lot_id', 'qty','location_id'],
                     domain: [["lot_id", "!=", false]],
                     loaded: function(self, stock_quant){
                         self.stock_quant = stock_quant;
@@ -26,29 +25,98 @@ odoo.define("pos_lot_selection.models", function (require) {
                 };
                 _posmodel_super.models.push(model_stock_quant);
 
-               //console.log('_posmodel_super,models',  _posmodel_super.models)
-         },
+          },
+
+        update_model: function(line){
+            var self = this;
+            var product = line.get_product().id;
+            var model_stock_quant  = self.stock_quant
+            var location_id = self.config.stock_location_id[0];
+
+            var filter_models =  model_stock_quant.filter(function(filter) {
+                        return (filter.product_id[0] == product) && (filter.location_id[0] == location_id);
+                    });
+
+            if (line){
+
+                var product = line.get_product();
+
+                if(line.has_product_lot){
+
+                    if(line.product.tracking === "serial"){
+
+                        line.pack_lot_lines.each(function(product_serial){
+
+                            // stock_quant lot_name
+                            var lot_name = product_serial.attributes.lot_name;
+
+                             //product.qty_available -= line.get_quantity();
+
+                             var filter_product =  filter_models.filter(function(filter) {
+                                    return (filter.lot_id[1] == lot_name);
+                               });
+
+                             filter_product[0].qty -= filter_product[0].qty;
+
+
+                        });
+
+                    }else{
+
+                        line.pack_lot_lines.each(function(product_lot){
+                            var lot_name = product_lot.attributes.lot_name;
+                            var cantidad = product_lot.order_line.quantity;
+
+                            var filter_product =  filter_models.filter(function(filter) {
+                                    return (filter.lot_id[1] == lot_name);
+                               });
+
+                            filter_product[0].qty -= cantidad;
+
+                        });
+
+                    }
+
+                }
+
+            }
+
+        },
+        push_order: function(order){
+            var self = this;
+            var pushed = _posmodel_super.push_order.call(this, order);
+
+
+            if (order){
+
+                order.orderlines.each(function(line){
+
+                    self.update_model(line)
+
+
+                })
+            }
+            return pushed;
+        },
+
 
         get_lot: function(product, location_id, stock_quant) {
             var done = new $.Deferred();
             var self = this;
             
-            console.log('stock_quant', stock_quant)
+
                 var product_lot = [];
 
-                //console.log('location_id', stock_quant)
-                if (stock_quant.length) {
+                 if (stock_quant.length) {
 
                     var filter_models =  stock_quant.filter(function(filter) {
                         return (filter.product_id[0] == product) && (filter.location_id[0] == location_id);
                     });
 
-                    //console.log('filter_models',filter_models)
                     for (var i = 0; i < filter_models.length; i++) {
                         product_lot.push({
                             'lot_name': filter_models[i].lot_id[1],
                             'qty': filter_models[i].qty,
-                            'lot_qty': filter_models[i].name
                         });
                     }
                 }
@@ -99,10 +167,7 @@ odoo.define("pos_lot_selection.models", function (require) {
             }
             this.select_orderline(this.get_last_orderline());
 
-            //console.log('--------------------' + line.has_product_lot)
-
             if(line.has_product_lot){
-                //console.log(line.product.tracking)
 
                  if(line.product.tracking != 'lot'){
                     this.display_lot_popup();
@@ -128,17 +193,20 @@ odoo.define("pos_lot_selection.models", function (require) {
 
                 for (var i = 0; i < product_lot.length; i++) {
 
+
                     if(type_lot == 'serial'){
                        //Lista de producto serial disponibles
                         if (product_lot[i].qty != 0) {
                             lot_name.push(product_lot[i].lot_name);
-                            lot_value.push(product_lot[i].lot_qty);
+                            lot_value.push(product_lot[i].qty);
+
                         }
                     }else{
 
                         if (product_lot[i].qty >= compute_lot_lines.order_line.quantity) {
                             lot_name.push(product_lot[i].lot_name);
-                            lot_value.push(product_lot[i].lot_qty);
+                            lot_value.push(product_lot[i].qty);
+
                         }
                     }
 
