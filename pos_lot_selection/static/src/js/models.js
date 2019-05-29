@@ -7,14 +7,18 @@ odoo.define("pos_lot_selection.models", function (require) {
     var models = require("point_of_sale.models");
     var Model = require("web.DataModel");
     var session = require("web.session");
+    var PosBaseWidget = require('point_of_sale.BaseWidget');
 
     var _posmodel_super = models.PosModel.prototype;
 
     models.PosModel = models.PosModel.extend({
 
+
           initialize: function(session, attributes) {
                _posmodel_super.initialize.apply(this, arguments);
                this.stock_quant = [];
+               this.state_connection = '';
+
                var model_stock_quant = {
                     model:  'stock.quant',
                     fields: ['product_id','lot_id', 'qty','location_id'],
@@ -93,34 +97,99 @@ odoo.define("pos_lot_selection.models", function (require) {
 
                     self.update_model(line)
 
-
                 })
             }
             return pushed;
         },
 
+        doesConnectionExist: function () {
+            var xhr = new XMLHttpRequest();
+            var protocol = window.location.protocol;
+            var url = window.location.host;
 
-        get_lot: function(product, location_id, stock_quant) {
+            //console.log(protocol+url)
+
+
+            var file = protocol+'//'+url;
+             var r = Math.round(Math.random() * 10000);
+             xhr.open('HEAD', file + "?subins=" + r, false);
+             try {
+              xhr.send();
+              if (xhr.status >= 200 && xhr.status < 304) {
+               return true;
+              } else {
+               return false;
+              }
+             } catch (e) {
+              return false;
+             }
+
+
+        },
+
+        get_lot: function(product, location_id, stock_quant, type_lot) {
             var done = new $.Deferred();
             var self = this;
-            
+                console.log('self connection', self.doesConnectionExist());
 
-                var product_lot = [];
+            var model_stock_quant  = self.stock_quant
 
-                 if (stock_quant.length) {
+                if(self.doesConnectionExist()){
+                    session.rpc("/web/dataset/search_read", {
+                        "model": "stock.quant",
+                        "domain": [
+                            ["location_id", "=", location_id],
+                            ["product_id", "=", product]],
+                    }, {'async': false}).then(function (result) {
 
-                    var filter_models =  stock_quant.filter(function(filter) {
-                        return (filter.product_id[0] == product) && (filter.location_id[0] == location_id);
+
+                        var product_lot = [];
+                        if (result.length) {
+                            for (var i = 0; i < result.length; i++) {
+
+                                if(type_lot == 'lot'){
+
+                                    var filter_models =  model_stock_quant.filter(function(filter) {
+
+                                        return (filter.product_id[0] == product) && (filter.lot_id[0] == result.records[i].lot_id[0]);
+                                    });
+
+                                    filter_models[0].qty = result.records[i].qty;
+                                    console.log('Actualizado cache de Lotes lot_id/product_id/qty', result.records[i].lot_id[1]+'->'+product+'->'+result.records[i].qty)
+                                }
+                            console.log('Conexion al Server')
+
+                                product_lot.push({
+                                    'lot_name': result.records[i].lot_id[1],
+                                    'qty': result.records[i].qty,
+                                });
+                            }
+                        }
+                        done.resolve(product_lot);
                     });
 
-                    for (var i = 0; i < filter_models.length; i++) {
-                        product_lot.push({
-                            'lot_name': filter_models[i].lot_id[1],
-                            'qty': filter_models[i].qty,
+                }else{
+
+                    var product_lot = [];
+
+                     if (stock_quant.length) {
+
+                        var filter_models =  stock_quant.filter(function(filter) {
+                            return (filter.product_id[0] == product) && (filter.location_id[0] == location_id);
                         });
+
+                        for (var i = 0; i < filter_models.length; i++) {
+                             console.log('Sin Conexion al Server')
+
+                            product_lot.push({
+                                'lot_name': filter_models[i].lot_id[1],
+                                'qty': filter_models[i].qty,
+                            });
+                        }
                     }
+                    done.resolve(product_lot);
+
                 }
-                done.resolve(product_lot);
 
             return done;
         }
@@ -183,9 +252,9 @@ odoo.define("pos_lot_selection.models", function (require) {
         compute_lot_lines: function(){
             var done = new $.Deferred();
             var compute_lot_lines = _orderline_super.compute_lot_lines.apply(this, arguments);
+            var type_lot = compute_lot_lines.order_line.product.tracking;
 
-
-            this.pos.get_lot(this.product.id, this.pos.config.stock_location_id[0], this.pos.stock_quant)
+            this.pos.get_lot(this.product.id, this.pos.config.stock_location_id[0], this.pos.stock_quant, type_lot)
             .then(function (product_lot) {
                 var lot_name = [];
                 var lot_value = [];
