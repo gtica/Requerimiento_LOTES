@@ -21,6 +21,8 @@ List of modifications / Updates:
     * V.-2.5 Correción de Error en la Lista de producto tipo serial, no mostraba la lista si la cantidad en la linea de orden era mayor a uno
     * V.-3.0 Funcianabilidad de la aplicacion para operar en POS en estado sin conexión a Internet
     * V.-3.1 Actualizacion de cantidades vendidas y disponibles de lotes / serial en BD Cache
+    * V.-3.2 Capacidad dual de trabajar la inaformación con backend y cache, acción a ejecutar al abrir ventana de selección de lotes 
+    * V.-3.3 Permisos de manipulación de lotes para usuarios de caja diferente al rol de manager
 
  """,
     'depends': [
