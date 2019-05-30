@@ -107,7 +107,7 @@ odoo.define("pos_lot_selection.models", function (require) {
             var protocol = window.location.protocol;
             var url = window.location.host;
 
-            //console.log(protocol+url)
+            console.log('Hola soy la URL que verifica si hay conexion ->',protocol+url)
 
 
             var file = protocol+'//'+url;
@@ -142,9 +142,11 @@ odoo.define("pos_lot_selection.models", function (require) {
                             ["product_id", "=", product]],
                     }, {'async': false}).then(function (result) {
 
-
+                        console.log('Pido informacion al Backen sobre los Lotes ->',result)
                         var product_lot = [];
+                        console.log('Si tengo resultados entro aca result.length ->',result.length)
                         if (result.length) {
+
                             for (var i = 0; i < result.length; i++) {
 
                                 if(type_lot == 'lot'){
@@ -169,7 +171,7 @@ odoo.define("pos_lot_selection.models", function (require) {
                     });
 
                 }else{
-
+                    console.log('Aqui estamos por Cache stock_quant.length ->',stock_quant.length)
                     var product_lot = [];
 
                      if (stock_quant.length) {
@@ -259,7 +261,7 @@ odoo.define("pos_lot_selection.models", function (require) {
                 var lot_name = [];
                 var lot_value = [];
                 var type_lot = compute_lot_lines.order_line.product.tracking;
-
+                console.log('Aqui estoy en models.Orderline pido informacion a las lineas de product_lot.length', product_lot.length)
                 for (var i = 0; i < product_lot.length; i++) {
 
 
